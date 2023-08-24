@@ -87,9 +87,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 build cmake_object_order_depends_target_heap: phony || src/CMakeFiles/heap.dir
 
 build src/CMakeFiles/heap.dir/main.cpp.o: CXX_COMPILER__heap_Debug /Users/tomaspetricek/Programming/Languages/Cpp/heap/src/main.cpp || cmake_object_order_depends_target_heap
-  DEFINES = -DNDEBUG
   DEP_FILE = src/CMakeFiles/heap.dir/main.cpp.o.d
-  FLAGS = -O3 -Wall -Wextra -march=native -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -std=gnu++2b
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0 -std=gnu++2b
   INCLUDES = -I/Users/tomaspetricek/Programming/Languages/Cpp/heap/src/../include
   OBJECT_DIR = src/CMakeFiles/heap.dir
   OBJECT_FILE_DIR = src/CMakeFiles/heap.dir
@@ -103,7 +102,7 @@ build src/CMakeFiles/heap.dir/main.cpp.o: CXX_COMPILER__heap_Debug /Users/tomasp
 # Link the executable src/heap
 
 build src/heap: CXX_EXECUTABLE_LINKER__heap_Debug src/CMakeFiles/heap.dir/main.cpp.o
-  FLAGS = -O3 -Wall -Wextra -march=native -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.0
   OBJECT_DIR = src/CMakeFiles/heap.dir
   POST_BUILD = :
   PRE_LINK = :

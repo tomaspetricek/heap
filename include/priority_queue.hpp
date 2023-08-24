@@ -5,6 +5,7 @@
 #ifndef HEAP_PRIORITY_QUEUE_HPP
 #define HEAP_PRIORITY_QUEUE_HPP
 
+#include <cassert>
 #include <vector>
 #include <algorithm>
 
@@ -15,10 +16,31 @@ namespace top {
 
     }
 
+    template<class T, class Compare>
+    void push_heap(std::vector<T>& data, Compare comp)
+    {
+        std::size_t child{data.size()-1}, parent;
+        while (child) {
+            parent = static_cast<std::size_t>(std::floor((child+1)/2))-1;
+            if (comp(data[parent], data[child])) {
+                std::swap(data[parent], data[child]);
+            }
+            child = parent;
+        }
+    }
+
     template<class RandomIterator, class Compare>
     void push_heap(RandomIterator first, RandomIterator last, Compare comp)
     {
+        RandomIterator child = last-1, parent;
         // move upwards
+        while (first!=child) {
+            parent = child-(static_cast<std::size_t>(std::distance(first, child)/2)+1);
+            if (comp(*parent, *child)) {
+                std::swap(*parent, *child);
+            }
+            child = parent;
+        }
     }
 
     template<class RandomIterator, class Compare>

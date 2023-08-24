@@ -3,14 +3,12 @@
 
 int main()
 {
-    top::priority_queue<int> queue;
-    queue.push(1);
-    queue.push(2);
-    queue.push(3);
-    std::cout << queue.top() << std::endl;
-    queue.pop();
-    std::cout << queue.top() << std::endl;
-    queue.pop();
-    std::cout << queue.top() << std::endl;
+    std::vector<int> heap{50, 30, 20, 15, 10, 8, 16};
+    auto comp = std::less<int>{};
+    heap.push_back(60);
+//    top::push_heap(heap, comp);
+    top::push_heap(heap.begin(), heap.end(), comp);
+    std::vector<int> expect{60, 50, 20, 30, 10, 8, 16, 15};
+    assert(heap==expect);
     return 0;
 }
