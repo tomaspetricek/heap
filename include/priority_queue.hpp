@@ -24,8 +24,10 @@ namespace top {
             parent = static_cast<std::size_t>(std::floor((child+1)/2))-1;
             if (comp(data[parent], data[child])) {
                 std::swap(data[parent], data[child]);
+                child = parent;
+                continue;
             }
-            child = parent;
+            return;
         }
     }
 
@@ -38,17 +40,65 @@ namespace top {
             parent = child-(static_cast<std::size_t>(std::distance(first, child)/2)+1);
             if (comp(*parent, *child)) {
                 std::swap(*parent, *child);
+                child = parent;
+                continue;
             }
-            child = parent;
+            return;
+        }
+    }
+
+    template<class T, class Compare>
+    void pop_heap(std::vector<T>& heap, Compare comp)
+    {
+        heap.front() = heap.back();
+        std::size_t parent{0}, left, right, candidate;
+        // move downwards
+        while (true) {
+            left = (2*(parent+1))-1;
+            right = (2*(parent+1));
+            if (left<=heap.size()-1) {
+                if (right<=heap.size()-1) {
+                    candidate = (comp(heap[left], heap[right])) ? right : left;
+                }
+                else {
+                    candidate = left;
+                }
+                if (comp(heap[parent], heap[candidate])) {
+                    std::swap(heap[parent], heap[candidate]);
+                    parent = candidate;
+                    continue;
+                }
+            }
+            return;
         }
     }
 
     template<class RandomIterator, class Compare>
     void pop_heap(RandomIterator first, RandomIterator last, Compare comp)
     {
-//        data_.front() = data_.back();
-//        data_.pop_back();
+        *first = *(last-1);
+        RandomIterator parent{first}, left, right, candidate;
+        auto len = std::distance(first, last);
         // move downwards
+        while (true) {
+            auto dist = std::distance(first, parent);
+            left = first+std::min((2*(dist+1))-1, len);
+            right = first+std::min((2*(dist+1)), len);
+            if (left!=last) {
+                if (right!=last) {
+                    candidate = (comp(*left, *right)) ? right : left;
+                }
+                else {
+                    candidate = left;
+                }
+                if (comp(*parent, *candidate)) {
+                    std::swap(*parent, *candidate);
+                    parent = candidate;
+                    continue;
+                }
+            }
+            return;
+        }
     }
 
     template<class T, class Container = std::vector<T>, class Compare = std::less<typename Container::value_type>>

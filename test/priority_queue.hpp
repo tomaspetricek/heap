@@ -88,8 +88,9 @@ BOOST_AUTO_TEST_SUITE(priority_queue_test)
             std::make_heap(expect.begin(), expect.end(), comp);
 
             while(!actual.empty()) {
-//                BOOST_REQUIRE_EQUAL(expect.front(), actual.front());
-//                BOOST_REQUIRE_EQUAL(expect.size(), actual.size());
+                BOOST_REQUIRE(std::is_heap(actual.begin(), actual.end(), comp));
+                BOOST_REQUIRE_EQUAL(expect.front(), actual.front());
+                BOOST_REQUIRE_EQUAL(expect.size(), actual.size());
                 std::pop_heap(expect.begin(), expect.end(), comp), expect.pop_back();
                 top::pop_heap(actual.begin(), actual.end(), comp), actual.pop_back();
 //                BOOST_REQUIRE(expect==actual);

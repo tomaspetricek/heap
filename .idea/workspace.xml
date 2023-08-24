@@ -20,17 +20,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9fa65e5a-4091-4e42-bb73-8bba478593c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-0ad63212e2f09a404d90.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-08-24T07-26-02-0299.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-heap-Debug-ee93e4adc8b84f3bd944.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/src/heap" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/src/heap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/test/test_" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/test/test_" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/priority_queue.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/priority_queue.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/priority_queue.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/priority_queue.hpp" afterDir="false" />
     </list>
@@ -70,9 +64,10 @@
   }
 }</component>
   <component name="RunManager" selected="CMake Application.test_">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="pop_heap_test" type="CMakeBoostTestRunConfigurationType" factoryName="Boost Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="heap" TARGET_NAME="test_" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="heap" RUN_TARGET_NAME="test_" TEST_CLASS="priority_queue_test" TEST_METHOD="pop_heap_test" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="heap" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="heap" TARGET_NAME="heap" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="heap" RUN_TARGET_NAME="heap">
@@ -92,10 +87,16 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Boost.Test.pop_heap_test" />
       <item itemvalue="CMake Application.heap" />
       <item itemvalue="CMake Application.test_" />
       <item itemvalue="CTest Application.All CTest" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Boost.Test.pop_heap_test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -106,7 +107,8 @@
       <option name="presentableId" value="Default" />
       <updated>1692861808251</updated>
       <workItem from="1692861811274" duration="511000" />
-      <workItem from="1692862339713" duration="8285000" />
+      <workItem from="1692862339713" duration="11447000" />
+      <workItem from="1692894289966" duration="961000" />
     </task>
     <servers />
   </component>
@@ -123,5 +125,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/test/priority_queue.hpp</url>
+          <line>89</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
