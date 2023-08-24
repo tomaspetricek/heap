@@ -80,7 +80,7 @@ namespace top {
             std::swap(other.data_, data_);
         }
 
-        size_type size() const
+        std::size_t size() const
         {
             return data_.size();
         }
