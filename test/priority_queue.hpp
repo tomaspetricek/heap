@@ -70,7 +70,8 @@ BOOST_AUTO_TEST_SUITE(priority_queue_test)
         for (std::size_t i{0}; i<1'000; i++) {
             std::make_heap(expect.begin(), expect.end(), comp);
             top::make_heap(actual.begin(), actual.end(), comp);
-//            BOOST_REQUIRE(expect==actual);
+            BOOST_REQUIRE(expect==actual);
+            BOOST_REQUIRE(std::is_heap(actual.begin(), actual.end(), comp));
             std::shuffle(actual.begin(), actual.end(), gen);
             expect = actual;
         }
@@ -87,7 +88,7 @@ BOOST_AUTO_TEST_SUITE(priority_queue_test)
             std::make_heap(actual.begin(), actual.end(), comp);
             std::make_heap(expect.begin(), expect.end(), comp);
 
-            while(!actual.empty()) {
+            while (!actual.empty()) {
                 BOOST_REQUIRE(std::is_heap(actual.begin(), actual.end(), comp));
                 BOOST_REQUIRE_EQUAL(expect.front(), actual.front());
                 BOOST_REQUIRE_EQUAL(expect.size(), actual.size());
@@ -108,7 +109,7 @@ BOOST_AUTO_TEST_SUITE(priority_queue_test)
         std::mt19937 gen(std::random_device{}());
 
         for (std::size_t i{0}; i<1'000; i++) {
-            for (const auto& val : data) {
+            for (const auto& val: data) {
                 BOOST_REQUIRE_EQUAL(expect.size(), actual.size());
                 expect.push_back(val), std::push_heap(expect.begin(), expect.end(), comp);
                 actual.push_back(val), top::push_heap(actual.begin(), actual.end(), comp);

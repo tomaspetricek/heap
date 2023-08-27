@@ -7,64 +7,24 @@
 
 #include <cassert>
 #include <vector>
-#include <algorithm>
 
 namespace top {
-    template<class RandomIterator, class Compare>
-    void make_heap(RandomIterator first, RandomIterator last, Compare comp)
-    {
-
-    }
-
     template<class T, class Compare>
-    void push_heap(std::vector<T>& data, Compare comp)
+    void move_downwards(std::vector<T>& arr, Compare comp, std::size_t parent)
     {
-        std::size_t child{data.size()-1}, parent;
-        while (child) {
-            parent = static_cast<std::size_t>(std::floor((child+1)/2))-1;
-            if (comp(data[parent], data[child])) {
-                std::swap(data[parent], data[child]);
-                child = parent;
-                continue;
-            }
-            return;
-        }
-    }
-
-    template<class RandomIterator, class Compare>
-    void push_heap(RandomIterator first, RandomIterator last, Compare comp)
-    {
-        RandomIterator child = last-1, parent;
-        // move upwards
-        while (first!=child) {
-            parent = child-(static_cast<std::size_t>(std::distance(first, child)/2)+1);
-            if (comp(*parent, *child)) {
-                std::swap(*parent, *child);
-                child = parent;
-                continue;
-            }
-            return;
-        }
-    }
-
-    template<class T, class Compare>
-    void pop_heap(std::vector<T>& heap, Compare comp)
-    {
-        heap.front() = heap.back();
-        std::size_t parent{0}, left, right, candidate;
-        // move downwards
+        std::size_t left, right, candidate;
         while (true) {
             left = (2*(parent+1))-1;
             right = (2*(parent+1));
-            if (left<=heap.size()-1) {
-                if (right<=heap.size()-1) {
-                    candidate = (comp(heap[left], heap[right])) ? right : left;
+            if (left<=arr.size()-1) {
+                if (right<=arr.size()-1) {
+                    candidate = (comp(arr[left], arr[right])) ? right : left;
                 }
                 else {
                     candidate = left;
                 }
-                if (comp(heap[parent], heap[candidate])) {
-                    std::swap(heap[parent], heap[candidate]);
+                if (comp(arr[parent], arr[candidate])) {
+                    std::swap(arr[parent], arr[candidate]);
                     parent = candidate;
                     continue;
                 }
@@ -74,12 +34,10 @@ namespace top {
     }
 
     template<class RandomIterator, class Compare>
-    void pop_heap(RandomIterator first, RandomIterator last, Compare comp)
+    void move_downwards(RandomIterator first, RandomIterator last, Compare comp, RandomIterator parent)
     {
-        *first = *(last-1);
-        RandomIterator parent{first}, left, right, candidate;
+        RandomIterator left, right, candidate;
         auto len = std::distance(first, last);
-        // move downwards
         while (true) {
             auto dist = std::distance(first, parent);
             left = first+std::min((2*(dist+1))-1, len);
@@ -101,6 +59,82 @@ namespace top {
         }
     }
 
+    template<class T, class Compare>
+    void move_upwards(std::vector<T>& heap, Compare comp, std::size_t child)
+    {
+        std::size_t parent;
+        while (child) {
+            parent = static_cast<std::size_t>(std::floor((child+1)/2))-1;
+            if (comp(heap[parent], heap[child])) {
+                std::swap(heap[parent], heap[child]);
+                child = parent;
+                continue;
+            }
+            return;
+        }
+    }
+
+    template<class RandomIterator, class Compare>
+    void move_upwards(RandomIterator first, RandomIterator last, Compare comp, RandomIterator child)
+    {
+        RandomIterator parent;
+        while (first!=child) {
+            parent = child-(static_cast<std::size_t>(std::distance(first, child)/2)+1);
+            if (comp(*parent, *child)) {
+                std::swap(*parent, *child);
+                child = parent;
+                continue;
+            }
+            return;
+        }
+    }
+
+    template<class T, class Compare>
+    void make_heap(std::vector<T>& heap, Compare comp)
+    {
+        std::size_t root{heap.size()};
+        // adjust elements from the end
+        while (root--) {
+            move_downwards(heap, comp, root);
+        }
+    }
+
+    template<class RandomIterator, class Compare>
+    void make_heap(RandomIterator first, RandomIterator last, Compare comp)
+    {
+        RandomIterator root{last};
+        while (first!=root--) {
+            move_downwards(first, last, comp, root);
+        }
+    }
+
+    template<class T, class Compare>
+    void push_heap(std::vector<T>& heap, Compare comp)
+    {
+        move_upwards(heap, comp, heap.size()-1);
+    }
+
+    template<class RandomIterator, class Compare>
+    void push_heap(RandomIterator first, RandomIterator last, Compare comp)
+    {
+        move_upwards(first, last, comp, last-1);
+    }
+
+    template<class T, class Compare>
+    void pop_heap(std::vector<T>& heap, Compare comp)
+    {
+        heap.front() = heap.back();
+        move_downwards(heap, comp, 0);
+    }
+
+    template<class RandomIterator, class Compare>
+    void pop_heap(RandomIterator first, RandomIterator last, Compare comp)
+    {
+        *first = *(last-1);
+        move_downwards(first, last, comp, first);
+    }
+
+    // explanation: 2.6.3 Heap - Heap Sort - Heapify - Priority Queues (https://youtu.be/HqPJF2L5h9U)
     template<class T, class Container = std::vector<T>, class Compare = std::less<typename Container::value_type>>
     class priority_queue {
         Compare comp_;
@@ -115,7 +149,7 @@ namespace top {
                 :comp_{comp}, data_{data}
         {
             // heapify
-            std::make_heap(data_.begin(), data_.end(), comp_);
+            top::make_heap(data_.begin(), data_.end(), comp_);
         }
 
         const T& top() const
@@ -138,12 +172,12 @@ namespace top {
         void emplace(Args&& ... args)
         {
             data_.emplace_back(std::forward<Args>(args)...);
-            std::push_heap(data_.begin(), data_.end(), comp_);
+            top::push_heap(data_.begin(), data_.end(), comp_);
         }
 
         void pop()
         {
-            std::pop_heap(data_.begin(), data_.end(), comp_);
+            top::pop_heap(data_.begin(), data_.end(), comp_);
             data_.pop_back();
         }
 
