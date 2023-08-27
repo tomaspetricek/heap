@@ -20,13 +20,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9fa65e5a-4091-4e42-bb73-8bba478593c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/src/heap" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/src/heap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/test/test_" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/test/test_" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/priority_queue.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/priority_queue.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/priority_queue.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/priority_queue.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +106,7 @@
       <workItem from="1692862339713" duration="11447000" />
       <workItem from="1692894289966" duration="1027000" />
       <workItem from="1693065160493" duration="59000" />
-      <workItem from="1693113751416" duration="2028000" />
+      <workItem from="1693113751416" duration="2554000" />
     </task>
     <servers />
   </component>

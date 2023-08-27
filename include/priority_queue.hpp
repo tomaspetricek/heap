@@ -75,7 +75,7 @@ namespace top {
     }
 
     template<class RandomIterator, class Compare>
-    void move_upwards(RandomIterator first, RandomIterator last, Compare comp, RandomIterator child)
+    void move_upwards(RandomIterator first, Compare comp, RandomIterator child)
     {
         RandomIterator parent;
         while (first!=child) {
@@ -117,7 +117,7 @@ namespace top {
     template<class RandomIterator, class Compare>
     void push_heap(RandomIterator first, RandomIterator last, Compare comp)
     {
-        move_upwards(first, last, comp, last-1);
+        move_upwards(first, comp, last-1);
     }
 
     template<class T, class Compare>

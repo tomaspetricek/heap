@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_SUITE(priority_queue_test)
                 BOOST_REQUIRE_EQUAL(expect.size(), actual.size());
                 std::pop_heap(expect.begin(), expect.end(), comp), expect.pop_back();
                 top::pop_heap(actual.begin(), actual.end(), comp), actual.pop_back();
-//                BOOST_REQUIRE(expect==actual);
+                BOOST_REQUIRE(expect==actual);
             }
             std::shuffle(data.begin(), data.end(), gen);
             actual = expect = data;
